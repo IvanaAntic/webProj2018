@@ -1,0 +1,13 @@
+1|pera|sifra1|petar|petrovic|kupac|0659779634|pera@pera|12.01.2006|
+2|kor2|sifra2|ime2|petrovic|dobavljac|0659779634|pera@pera|12.01.2006|
+3|kor3|sifra3|ime3|prz|administrator|0659119634|a@a|12.01.2006|
+4|kor4|sifra4|ime4|peovic|kupac|0659779634|k@k4|12.01.2006|
+5|kor5|sifra5|ime5|povic|administrator|0659779634|k@k5|12.01.2006|
+6|kor6|sifra6|ime6|rovic|dobavljac|0659779634|k@k6|12.01.2006|
+7|kor7|sifra7|ime7|trovic|dobavljac|0659779634|k@k7|12.01.2006|
+8|ivana|ivana|iva|antic|kupac|0659779634|k@k7|12.01.2006|
+9|a|a|a|a|kupac|a|a|21.01.2018|
+10|s|s|s|s|kupac|s|s|21.01.2018|
+11|h|s|s|s|kupac|s|s|21.01.2018|
+12|novi|novi1|Novi|Novak|kupac|236555|n@n|28.01.2019|
+13|Novak|novak1|Novovic|Novak|kupac|12366|novi@novi|28.01.2019|

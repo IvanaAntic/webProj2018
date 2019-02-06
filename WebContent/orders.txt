@@ -1,0 +1,1 @@
+1|[Stavka [ idArticle=5, amount=7], Stavka [ idArticle=3, amount=1]]|1|6|199.54326971738166|Note|Poruceno|

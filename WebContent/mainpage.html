@@ -1,0 +1,760 @@
+<html>
+<head>
+<title>user page</title>
+<!-- JQuery -->
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<!-- BOOTSTRAP JS -->
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<!-- BOOTSTRAP CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/mainpage.js"></script>
+<style>
+body {
+	padding-top: 70px;
+	/* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+	padding-left: 20px;
+}
+</style>
+<script>
+
+</script>
+
+</head>
+<body>
+<!-- Nav bar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top navbar-custom">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Order food</a>
+			</div>
+			
+			<ul class="nav navbar-nav navbar-right">
+			
+				<li><a   id="logout-button" ><span
+						class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+							
+			</ul>
+		</div>
+	</nav>
+	
+	<h3>Logged:</h3>
+	<p id="namelogged"></p>
+	<div id="adminPanel">
+		
+		
+	</div>
+	<div id="userPanel">
+		
+		
+	</div>
+	
+	<div id="dobavljacShow">
+	<h2>Preuzimanje porudzbina</h2>
+	<table class="table table-striped table-bordered">
+	<tr>
+		<th>Naziv</th>
+		<th>Cena</th>
+		<th>Opis</th>
+		<th>Tip</th>
+		<th>Status</th>
+		<th>Kolicina</th>
+		<th></th>
+	</tr>
+		<tbody  id="por">
+		</tbody>
+	
+	</table>
+	<h2>Dostavljanje sa linkovima</h2>
+	<table  class="table table-striped table-bordered">
+	<tr>
+		<th>Naziv</th>
+		<th>Cena</th>
+		<th>Opis</th>
+		<th>Tip</th>
+		<th>Status</th>
+		<th></th>
+	</tr>
+	<tbody  id="dostavautoku">
+		</tbody>
+	</table>
+	</div>
+	
+	<div id="hideDobavljac">
+	<div>
+	<h2>Artikli     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchArticle">Search</button></h2>
+		<div id="tableArticle">
+		<table id="formTableArticle" class="table table-striped table-bordered">
+			<tr>
+				<td>Naziv</td>
+				<td>Cena</td>
+				<td>Opis</td>
+				<td>Tip</td>
+				<td>Kolicina</td>
+				<td id="kolonajedan">&nbsp;</td>
+				<td id="kolonadva">&nbsp;</td>
+				
+			</tr>
+		</table>
+		</div>
+	</div>
+	<div id="adminOrdersPanel">
+		<h2>Orders</h2> 
+		<table class="table table-striped table-bordered">
+			<tr>
+				<td>Status</td>
+				<td>customerId</td>
+				<td>delivererId</td>
+				<td>Cena</td>
+				<td>Kolicina</td>
+				<td>Note</td>
+				<td id="kolonajedan">&nbsp;</td>
+				<td id="kolonadva">&nbsp;</td>
+				
+				
+			</tr>
+			<tbody id="formTableOrders">
+			</tbody>
+		</table>
+	</div>
+	<!-- restaurants table -->
+	<div>
+	<h2>Restaurants <button  class="btn btn-info"  data-toggle="modal" data-target="#searchRestaurant">Search</button></h2>
+	<table  class="table table-striped table-bordered" id="formTableRestaurant" >
+	<tr>
+		<td>Name</td>
+		<td>Address</td>
+		<td>Tip</td>
+		<td>&nbsp;</td>
+		<td id="kolona2">&nbsp;</td>
+		<td id="kolona3">&nbsp;</td>
+		<td id="kolona4">&nbsp;</td>
+	</tr>
+	
+	</table>
+	</div>
+	<!-- end restaurants table -->
+	
+	<!-- vechicle table -->
+	<div id="ve">
+	<h2>Vechicle </h2>
+	<table  class="table table-striped table-bordered" id="formTableVechicle" >
+	<tr>
+		<td>Mark</td>
+		<td>Model</td>
+		<td>Tip</td>
+		<td>Registration</td>
+		<td>YearOfDistribution</td>
+		<td>Used</td>
+		<td>Note</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	</table>
+	</div>
+	<!-- end vechicle table -->
+	</div>
+	
+	<!-- Modal change role -->
+	<div id="changeRole" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"> Change Role</h4>
+				</div>
+				<div class="modal-body">
+					<form id="changeRoleForm" class="form-horizontal" role="form" >
+
+						<div class="form-group">
+							<label for="adress" class="col-sm-2 control-label">Address</label>
+							<div class="col-sm-10">
+								<input name="username" type="text" class="form-control" id="username" placeholder="Enter Username" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="username" class="col-sm-2 control-label">Add type</label>
+							<div class="col-sm-10" class="dropdown">
+							
+								  <select name="role" class="form-control" id="selectUserRole">
+								    <option value="0">kupac</option>
+								    <option value="1">administrator</option>
+								    <option value="2">dobavljac</option>
+								  </select>
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-primary text-right" id="changeUserRole">Save</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--END Modal change role -->
+	
+	<!-- ADD MODAL RESTAURANT -->
+	<div id="addRestaurant" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"> Add restaurant</h4>
+				</div>
+				<div class="modal-body">
+					<form id="addRestaurantForm" class="form-horizontal" role="form" >
+
+						<div class="form-group">
+							<label for="name" class="col-sm-2 control-label">Name</label>
+							<div class="col-sm-10">
+								<input name="name" type="text" class="form-control" id="name" placeholder="Enter restaurant name" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="adress" class="col-sm-2 control-label">Address</label>
+							<div class="col-sm-10">
+								<input name="address" type="text" class="form-control" id="address" placeholder="Enter address" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="username" class="col-sm-2 control-label">Add type</label>
+							<div class="col-sm-10" class="dropdown">
+							
+								  <select name="role" class="form-control" id="selectUserRole">
+								    <option value="0">domaca_kuhinja</option>
+								    <option value="1">rostilj</option>
+								    <option value="2">kineski_restoran</option>
+								    <option value="3">indijski_restoran</option>
+								    <option value="4">poslasticarnica</option>
+								  	<option value="5">picerija</option>
+								  </select>
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-primary text-right" id="saveRestaurant">Save</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+		<!-- END ADD MODAL RESTAURANT -->
+	
+	<!--  ADD MODAL ARTICLE -->
+	<div id="addArticle" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"> Add article</h4>
+				</div>
+				<div class="modal-body">
+					<form id="addArticleForm" class="form-horizontal" role="form" >
+
+						<div class="form-group">
+							<label for="articlename" class="col-sm-2 control-label">Article name</label>
+							<div class="col-sm-10">
+								<input name="articlename" type="text" class="form-control" id="articlename" placeholder="Enter article name" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="price" class="col-sm-2 control-label">Price</label>
+							<div class="col-sm-10">
+								<input name="price" min="0" type="number" class="form-control" id="price" placeholder="Enter price og article" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="description" class="col-sm-2 control-label">Description</label>
+							<div class="col-sm-10">
+								<input name="description" type="text" class="form-control" id="description" placeholder="Enter description" required>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="quantity" class="col-sm-2 control-label">Quantity</label>
+							<div class="col-sm-10">
+								<input name="quantity" min="0" type="text" class="form-control" id="quantity" placeholder="Enter quantity" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="type" class="col-sm-2 control-label">Add type</label>
+							<div class="col-sm-10" class="dropdown">
+							
+								  <select name="role" class="form-control" id="selectArticle">
+								    <option value="0">drink</option>
+								    <option value="1">food</option>
+								  </select>
+								
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="type" class="col-sm-2 control-label">Add restaurant</label>
+							<div class="col-sm-10" class="dropdown" >
+							
+								  <select name="role" class="form-control" id="selectRestaurantToAdd">
+								    
+								  </select>
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-primary text-right" id="saveArticle">Save</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END ADD MODAL ARTICLE -->
+	
+	
+	<!--  Edit MODAL ARTICLE -->
+	<div id="editArticleModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"> Add article</h4>
+				</div>
+				<div class="modal-body">
+					<form id="addArticleForm" class="form-horizontal" role="form" >
+
+						<div class="form-group">
+							<label for="articlename" class="col-sm-2 control-label">Article name</label>
+							<div class="col-sm-10">
+								<input name="articlename" type="text" class="form-control" id="articlenameEdit" placeholder="Enter article name" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="price" class="col-sm-2 control-label">Price</label>
+							<div class="col-sm-10">
+								<input name="price" min="0" type="text" class="form-control" id="priceEdit" placeholder="Enter price og article" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="description" class="col-sm-2 control-label">Description</label>
+							<div class="col-sm-10">
+								<input name="description" type="text" class="form-control" id="descriptionEdit" placeholder="Enter description" required>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="quantity" class="col-sm-2 control-label">Quantity</label>
+							<div class="col-sm-10">
+								<input name="quantity" min="0" type="text" class="form-control" id="quantityEdit" placeholder="Enter quantity" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="type" class="col-sm-2 control-label">Add type</label>
+							<div class="col-sm-10" class="dropdown">
+							
+								  <select name="role" class="form-control" id="selectArticleEdit">
+								    <option value="0">drink</option>
+								    <option value="1">food</option>
+								  </select>
+								
+							</div>
+						</div>
+						
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-primary text-right" id="saveArticleEdit">Save</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END ADD MODAL ARTICLE -->
+	
+	<div id="addVehicle" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"> Add vehicle</h4>
+				</div>
+				<div class="modal-body">
+					<form id="addVehicleForm" class="form-horizontal" role="form">
+
+						<div class="form-group">
+							<label for="mark" class="col-sm-2 control-label">Mark</label>
+							<div class="col-sm-10">
+								<input name="mark" type="text" class="form-control" id="mark" placeholder="Enter mark" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="model" class="col-sm-2 control-label">Model</label>
+							<div class="col-sm-10">
+								<input name="model" type="text" class="form-control" id="model" placeholder="Enter model" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="registration" class="col-sm-2 control-label">Registration</label>
+							<div class="col-sm-10">
+								<input name="registration" type="number" min="0" class="form-control" id="registration" placeholder="Enter registration" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="godiste" class="col-sm-2 control-label">Year of distribution</label>
+							<div class="col-sm-10">
+								<input type="number" id="godiste" name="godiste" placeholder="Enter year" required/>	
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="usage" class="col-sm-2 control-label">Usage</label>
+							<div class="col-sm-10">
+								<input name="usage" type="checkbox" id="usage" checked>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="note" class="col-sm-2 control-label">Note</label>
+							<div class="col-sm-10">
+								<input name="note" type="text" class="form-control" id="note" placeholder="Enter note" required>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="type" class="col-sm-2 control-label">Add type</label>
+							<div class="col-sm-10" class="dropdown">
+							
+								  <select name="role" class="form-control" id="typeVehicle">
+								    <option value="0">bicikl</option>
+								    <option value="1">skuter</option>
+								    <option value="2">automobil</option>
+								  </select>
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-primary text-right" id="saveVehicle">Save</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--  IZMENI RESTORAN -->
+	<div id="editRestaurant" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"> Edit restaurant</h4>
+				</div>
+				<div class="modal-body">
+					<form id="addRestaurantForm" class="form-horizontal" role="form"  >
+
+						<div class="form-group">
+							<label for="name" class="col-sm-2 control-label">Name</label>
+							<div class="col-sm-10">
+								<input name="editName" type="text" class="form-control" id="editName"  required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="adress" class="col-sm-2 control-label">Adress</label>
+							<div class="col-sm-10">
+								<input name="adress" type="text" class="form-control" id="editAdress" placeholder="Enter adress" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="username" class="col-sm-2 control-label">Add type</label>
+							<div class="col-sm-10" class="dropdown">
+							
+								  <select name="role" class="form-control" id="editSelectRes">
+								    <option value="0">domaca_kuhinja</option>
+								    <option value="1">rostilj</option>
+								    <option value="2">kineski_restoran</option>
+								    <option value="3">indijski_restoran</option>
+								    <option value="4">poslasticarnica</option>
+								  	<option value="5">picerija</option>
+								  
+								  </select>
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								 <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+								<button type="submit" class="btn btn-primary text-right" id="editSaveRestaurant">Save</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	
+	<!-- search res -->
+	<div id="searchRestaurant" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"> search restaurant</h4>
+				</div>
+				<div class="modal-body">
+			
+					<div id="sakrij">
+					<form  class="form-horizontal" role="form" >
+
+						<div class="form-group">
+							<label for="name" class="col-sm-2 control-label">Name</label>
+							<div class="col-sm-10">
+								<input name="name" type="text" class="form-control" id="nameSearch" placeholder="Enter restaurant name" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="adress" class="col-sm-2 control-label">Address</label>
+							<div class="col-sm-10">
+								<input name="address" type="text" class="form-control" id="addressSearch" placeholder="Enter address" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="username" class="col-sm-2 control-label">Add type</label>
+							<div class="col-sm-10" class="dropdown">
+							
+								  <select name="role" class="form-control" id="selectSearch">
+								    <option value="0">domaca_kuhinja</option>
+								    <option value="1">rostilj</option>
+								    <option value="2">kineski_restoran</option>
+								    <option value="3">indijski_restoran</option>
+								    <option value="4">poslasticarnica</option>
+								  	<option value="5">picerija</option>
+								  	<option value="6">none</option>
+								  </select>
+								
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-primary text-right" id="searchRestaurantSave">Search</button>
+							</div>
+						</div>
+					</form>
+					</div>
+						<div id="result">
+							
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- end search res -->
+	
+	<!-- search ARTICLE-->
+	
+	<div id="searchArticle" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"> Add article</h4>
+				</div>
+				<div class="modal-body">
+					<form id="" class="form-horizontal" role="form" >
+
+						<div class="form-group">
+							<label for="articlename" class="col-sm-2 control-label">Article name</label>
+							<div class="col-sm-10">
+								<input name="articlename" type="text" class="form-control" id="AN" placeholder="Enter article name" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="price" class="col-sm-2 control-label">Price</label>
+							<div class="col-sm-10">
+								<input name="price" min="0" type="number" class="form-control" id="priceA" placeholder="Enter price og article" >
+							</div>
+						</div>
+					
+						<div class="form-group">
+							<label for="type" class="col-sm-2 control-label">type</label>
+							<div class="col-sm-10" class="dropdown">
+							
+								  <select name="role" class="form-control" id="selectArticleSearch">
+								    <option value="0">drink</option>
+								    <option value="1">food</option>
+								   	  <option value="2">none</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="type" class="col-sm-2 control-label">Add restaurant</label>
+							<div class="col-sm-10" class="dropdown" >
+							
+								  <select name="role" class="form-control" id="selectRestaurantToSearch">
+								    
+								  </select>
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-primary text-right" id="searchArticleButton">Search</button>
+							</div>
+						</div>
+						</form>
+					<div id="resultA">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- END search ARTICLE-->
+	
+	<!-- Edit Order-->
+	
+	<div id="editOrder" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"> Add article</h4>
+				</div>
+				<div class="modal-body">
+					<form id="" class="form-horizontal" role="form" >
+
+						<div class="form-group">
+							<label for="articlename" class="col-sm-2 control-label">Article name</label>
+							<div class="col-sm-10">
+								<input name="articlename" type="text" class="form-control" id="AN" placeholder="Enter article name" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="price" class="col-sm-2 control-label">Price</label>
+							<div class="col-sm-10">
+								<input name="price" min="0" type="number" class="form-control" id="priceA" placeholder="Enter price og article" >
+							</div>
+						</div>
+					
+						<div class="form-group">
+							<label for="type" class="col-sm-2 control-label">type</label>
+							<div class="col-sm-10" class="dropdown">
+							
+								  <select name="role" class="form-control" id="selectArticleSearch">
+								    <option value="0">drink</option>
+								    <option value="1">food</option>
+								   	  <option value="2">none</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="type" class="col-sm-2 control-label">Add restaurant</label>
+							<div class="col-sm-10" class="dropdown" >
+							
+								  <select name="role" class="form-control" id="selectRestaurantToSearch">
+								    
+								  </select>
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-primary text-right" id="searchArticleButton">Search</button>
+							</div>
+						</div>
+						</form>
+					<div id="resultA">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- END search ARTICLE-->
+	
+	
+	
+	<!-- fav res-->
+	
+	<div id="favList" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"> Favourite</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" role="form" >
+
+				
+				<table id="favRes" class="table table-striped table-bordered">
+						<tr>
+						<th>Name</th>
+						<th>Address</th>
+						<th>Type</th>
+						</tr>
+						</table>
+					
+
+					
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END fav res-->
+
+	
+		<div id="orderList" class="modal fade" role="dialog">
+		<div class="modal-dialog" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"> Moje porudzbine</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" role="form" >
+				<table class="table table-striped table-bordered">
+						<tr>
+						<th>Naziv</th>
+						<th>Cena</th>
+						<th>Opis</th>
+						<th>Tip</th>
+						<th>Status</th>
+						<th>Kolicina</th>
+						<th>Cena Ukupno</th>
+						</tr>
+						<tbody id="ordersUser">
+						</tbody>
+				</table>
+					
+
+					
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+</body>
+</html>

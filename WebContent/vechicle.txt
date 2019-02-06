@@ -1,0 +1,16 @@
+5|Mark - 4|Model - 4|bicikl|1223645 - 4|24.12.2018|false|Note - 4|
+6|Mark - 5|Model - 5|skuter|1223645 - 5|24.12.2018|false|Note - 5|
+7|Mark - 6|Model - 6|skuter|1223645 - 6|24.12.2018|false|Note - 6|
+8|Mark - 7|Model - 7|skuter|1223645 - 7|24.12.2018|false|Note - 7|
+9|Mark - 8|Model - 8|skuter|1223645 - 8|24.12.2018|false|Note - 8|
+10|Mark - 9|Model - 9|skuter|1223645 - 9|24.12.2018|true|Note - 9|
+11|Mark - 10|Model - 10|skuter|1223645 - 10|24.12.2018|true|Note - 10|
+12|Mark - 11|Model - 11|skuter|1223645 - 11|24.12.2018|true|Note - 11|
+13|Mark - 12|Model - 12|skuter|1223645 - 12|24.12.2018|true|Note - 12|
+14|Mark - 13|Model - 13|skuter|1223645 - 13|24.12.2018|true|Note - 13|
+15|Mark - 14|Model - 14|skuter|1223645 - 14|24.12.2018|true|Note - 14|
+16|Mark - 15|Model - 15|skuter|1223645 - 15|24.12.2018|true|Note - 15|
+17|Mark - 16|Model - 16|skuter|1223645 - 16|24.12.2018|true|Note - 16|
+18|Mark - 17|Model - 17|skuter|1223645 - 17|24.12.2018|true|Note - 17|
+19|Mark - 18|Model - 18|skuter|1223645 - 18|24.12.2018|true|Note - 18|
+20|Mark - 19|Model - 19|skuter|1223645 - 19|24.12.2018|true|Note - 19|
